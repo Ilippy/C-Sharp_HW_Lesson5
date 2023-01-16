@@ -7,18 +7,19 @@ internal partial class Program
 {
     private static void Main(string[] args)
     {
-        int findNumber = 6;
+        int findNumber = NumberMain.Numbers.EnterNumber("Введите число в пределах[0,20], которое вы будете искать в массиве", 0, 20);
         int[] array = CreateRandomArray(10, 0, 20);
         ShowArray(array);
-        System.Console.WriteLine($"[{String.Join(", ", array)}] -> {IsNumberExsist(array, findNumber)}");
+        System.Console.WriteLine($"[{String.Join(", ", array)}] -> "+ (IsNumberExsist(array, findNumber) ? "да" : "нет"));
     }
 
-    static int[] CreateRandomArray(int N, int start, int end)
+    static int[] CreateRandomArray(int size, int start, int end)
     {
         int[] RandomArray = new int[size];
+        Random random = new Random();
         for (int i = 0; i < size; i++)
         {
-            RandomArray[i] = new Random().Next(start, end + 1);
+            RandomArray[i] = random.Next(start, end + 1);
         }
         return RandomArray;
     }
@@ -32,10 +33,11 @@ internal partial class Program
         Console.WriteLine();
     }
 
-    static bool IsNumberExsist(int[] array, int number){
+    static bool IsNumberExsist(int[] array, int number)
+    {
         foreach (int item in array)
         {
-            if(item == number) return true;
+            if (item == number) return true;
         }
         return false;
     }

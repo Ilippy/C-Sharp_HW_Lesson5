@@ -14,12 +14,13 @@ internal class Program
     }
 
 
-    static int[] CreateRandomArray(int N, int start, int end)
+    static int[] CreateRandomArray(int size, int start, int end)
     {
         int[] RandomArray = new int[size];
+        Random random = new Random();
         for (int i = 0; i < size; i++)
         {
-            RandomArray[i] = new Random().Next(start, end + 1);
+            RandomArray[i] = random.Next(start, end + 1);
         }
         return RandomArray;
     }
@@ -29,30 +30,20 @@ internal class Program
         int result = 0;
         for (int i = 0; i < array.Length; i++)
         {
-            if(array[i] >= min && array[i] <= max) result++;
+            if (array[i] >= min && array[i] <= max) result++;
         }
         return result;
     }
 
-    // int[] CreateArray()
-    // {
-    //     Console.WriteLine("Введите количество элементов массива");
-    //     int size = Convert.ToInt32(Console.ReadLine());
-    //     int[] array = new int[size];
-    //     for (int i = 0; i < size; i++)
-    //     {
-    //         Console.WriteLine($"Введите {i + 1} элемент массива");
-    //         array[i] = Convert.ToInt32(Console.ReadLine());
-    //     }
-    //     return array;
-    // }
+
 
     static void ShowArray(int[] array)
     {
-        for (int i = 0; i < array.Length; i++)
+        for (int i = 0; i < array.Length - 1; i++)
         {
-            Console.Write(array[i] + " ");
+            Console.Write(array[i] + ", ");
         }
+        Console.WriteLine(array[array.Length - 1]);
         Console.WriteLine();
     }
 
