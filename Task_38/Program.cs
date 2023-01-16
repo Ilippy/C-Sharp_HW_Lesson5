@@ -8,7 +8,7 @@ internal partial class Program
     {
         double[] array = CreateRandomArray(Numbers.EnterNumber("Введите длину массива"), 0, 100);
         ShowSubtractionOfMaxMinNumbers(array);
-        
+
     }
 
     static double[] CreateRandomArray(int size, double start, double end)
@@ -17,7 +17,7 @@ internal partial class Program
         Random random = new Random();
         for (int i = 0; i < size; i++)
         {
-            RandomArray[i] =  random.NextDouble() * (end - start) + start;
+            RandomArray[i] = random.NextDouble() * (end - start) + start;
         }
         return RandomArray;
     }
@@ -42,11 +42,22 @@ internal partial class Program
 
     static double GetMinMaxSubtraction(double[] array)
     {
-        return array.Max() - array.Min(); 
+        return array.Max() - array.Min();
+    }
+
+    static string PrintArray(double[] array)
+    {
+        string result = String.Empty;
+        for (int i = 0; i < array.Length - 1; i++)
+        {
+            result += $"{array[i]:F2}, ";
+        }
+        result += $"{array[array.Length - 1]:F2}";
+        return result;
     }
 
     static void ShowSubtractionOfMaxMinNumbers(double[] array)
     {
-        System.Console.WriteLine($"[{String.Join(", ", array)}] -> {GetVarianceOfMaxMinNumbers(array):F2} | {GetSubtractionOfMaxMinNumbers(array):F2} | {GetMinMaxSubtraction(array):F2}");
+        System.Console.WriteLine($"[{PrintArray(array)}] -> {GetVarianceOfMaxMinNumbers(array):F2} | {GetSubtractionOfMaxMinNumbers(array):F2} | {GetMinMaxSubtraction(array):F2}");
     }
 }
