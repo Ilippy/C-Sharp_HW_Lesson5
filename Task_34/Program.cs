@@ -14,9 +14,10 @@ internal partial class Program
     static int[] CreateRandomArray(int size, int start, int end)
     {
         int[] RandomArray = new int[size];
+        Random random = new Random();
         for (int i = 0; i < size; i++)
         {
-            RandomArray[i] = new Random().Next(start, end + 1);
+            RandomArray[i] = random.Next(start, end + 1);
         }
         return RandomArray;
     }
