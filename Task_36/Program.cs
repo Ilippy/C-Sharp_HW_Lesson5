@@ -3,11 +3,12 @@
 // [3, 7, 23, 12] -> 19
 // [-4, -6, 89, 6] -> 0
 
+using NumberMain;
 internal partial class Program
 {
     private static void Main(string[] args)
     {
-        int[] array = CreateRandomArray(8, -100, 100);
+        int[] array = CreateRandomArray(Numbers.EnterNumber("Введите длину массива"), -100, 100);
         ShowEvenNumbers(array);
     }
 

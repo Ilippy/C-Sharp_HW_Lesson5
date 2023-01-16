@@ -3,11 +3,12 @@
 
 // [345, 897, 568, 234] -> 2
 
+using NumberMain;
 internal partial class Program
 {
     private static void Main(string[] args)
     {
-        int[] array = CreateRandomArray(8, 100, 999);
+        int[] array = CreateRandomArray(Numbers.EnterNumber("Введите длину массива"), 100, 999);
         ShowOddsNumbers(array);
     }
 
