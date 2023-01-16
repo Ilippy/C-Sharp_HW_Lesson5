@@ -6,32 +6,32 @@ internal partial class Program
 {
     private static void Main(string[] args)
     {
-        int[] array = CreateRandomArray(Numbers.EnterNumber("Введите длину массива"), 0, 100);
+        double[] array = CreateRandomArray(Numbers.EnterNumber("Введите длину массива"), 0, 100);
         ShowSubtractionOfMaxMinNumbers(array);
         
     }
 
-    static int[] CreateRandomArray(int size, int start, int end)
+    static double[] CreateRandomArray(int size, double start, double end)
     {
-        int[] RandomArray = new int[size];
+        double[] RandomArray = new double[size];
         Random random = new Random();
         for (int i = 0; i < size; i++)
         {
-            RandomArray[i] = random.Next(start, end + 1);
+            RandomArray[i] =  random.NextDouble() * (end - start) + start;
         }
         return RandomArray;
     }
 
-    static int GetSubtractionOfMaxMinNumbers(int[] array)
+    static double GetSubtractionOfMaxMinNumbers(double[] array)
     {
-        int[] newArray = (int[])array.Clone();
+        double[] newArray = (double[])array.Clone();
         Array.Sort(newArray);
         return newArray[^1] - newArray[0];
     }
 
-    static int GetVarianceOfMaxMinNumbers(int[] array)
+    static double GetVarianceOfMaxMinNumbers(double[] array)
     {
-        int min = array[0], max = array[0];
+        double min = array[0], max = array[0];
         for (int i = 1; i < array.Length; i++)
         {
             if (array[i] > max) max = array[i];
@@ -40,13 +40,13 @@ internal partial class Program
         return max - min;
     }
 
-    static int GetMinMaxSubtraction(int[] array)
+    static double GetMinMaxSubtraction(double[] array)
     {
         return array.Max() - array.Min(); 
     }
 
-    static void ShowSubtractionOfMaxMinNumbers(int[] array)
+    static void ShowSubtractionOfMaxMinNumbers(double[] array)
     {
-        System.Console.WriteLine($"[{String.Join(", ", array)}] -> {GetVarianceOfMaxMinNumbers(array)} | {GetSubtractionOfMaxMinNumbers(array)} | {GetMinMaxSubtraction(array)}");
+        System.Console.WriteLine($"[{String.Join(", ", array)}] -> {GetVarianceOfMaxMinNumbers(array):F2} | {GetSubtractionOfMaxMinNumbers(array):F2} | {GetMinMaxSubtraction(array):F2}");
     }
 }
