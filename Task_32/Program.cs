@@ -10,17 +10,14 @@ internal partial class Program
         int[] array = CreateRandomArray(10, -10, 10);
         ShowArray(array);
         array = DivineArray(array);
-        ShowArray(array);
-
-
-
+        
     }
 
 
     static int[] CreateRandomArray(int N, int start, int end)
     {
-        int[] RandomArray = new int[N];
-        for (int i = 0; i < N; i++)
+        int[] RandomArray = new int[size];
+        for (int i = 0; i < size; i++)
         {
             RandomArray[i] = new Random().Next(start, end + 1);
         }
