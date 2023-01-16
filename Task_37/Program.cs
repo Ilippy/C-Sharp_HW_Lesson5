@@ -9,13 +9,13 @@ internal partial class Program
 {
     private static void Main(string[] args)
     {
-        int[] array = CreateRandomArray(9, 0, 9);
+        int[] array = CreateRandomArray(NumberMain.Numbers.EnterNumber("Введите длину массива"), 0, 9);
         ShowArray(array);
         System.Console.WriteLine($"[{String.Join(", ", array)}] -> {String.Join(", ", GetDivineArray(array))}");
 
     }
 
-    static int[] CreateRandomArray(int N, int start, int end)
+    static int[] CreateRandomArray(int size, int start, int end)
     {
         int[] RandomArray = new int[size];
         for (int i = 0; i < size; i++)
