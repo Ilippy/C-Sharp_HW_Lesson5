@@ -25,8 +25,42 @@ internal partial class Program
     static double GetSubtractionOfMaxMinNumbers(double[] array)
     {
         double[] newArray = (double[])array.Clone();
-        Array.Sort(newArray);
+        SortArray(newArray, 0, newArray.Length - 1);
+        // Console.WriteLine(PrintArray(newArray));
         return newArray[^1] - newArray[0];
+    }
+
+    static void SortArray(double[] array, int leftIndex, int rightIndex)
+    {
+        var i = leftIndex;
+        var j = rightIndex;
+        var pivot = array[leftIndex];
+        while (i <= j)
+        {
+            while (array[i] < pivot)
+            {
+                i++;
+            }
+
+            while (array[j] > pivot)
+            {
+                j--;
+            }
+            if (i <= j)
+            {
+                double temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+                i++;
+                j--;
+            }
+        }
+
+        if (leftIndex < j)
+            SortArray(array, leftIndex, j);
+        if (i < rightIndex)
+            SortArray(array, i, rightIndex);
+        
     }
 
     static double GetVarianceOfMaxMinNumbers(double[] array)
@@ -35,7 +69,7 @@ internal partial class Program
         for (int i = 1; i < array.Length; i++)
         {
             if (array[i] > max) max = array[i];
-            if (array[i] < min) min = array[i];
+            else if (array[i] < min) min = array[i];
         }
         return max - min;
     }
